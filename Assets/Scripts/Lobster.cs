@@ -39,7 +39,7 @@ public class Lobster : MonoBehaviour
         
         // går fram
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         
 
@@ -51,7 +51,7 @@ public class Lobster : MonoBehaviour
 
         if (collision.gameObject.name.EndsWith("wall"))
         { 
-            rb.rotation = Random.Range(120, 180);
+            rb.rotation = Random.Range(-180, 180);
         }
     }
 }
