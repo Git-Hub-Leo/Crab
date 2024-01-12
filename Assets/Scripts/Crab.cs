@@ -12,6 +12,10 @@ public class Crab : MonoBehaviour
     [SerializeField]
     private TMP_Text scoreDisplay;
     private int score = 0;
+    [SerializeField]
+    private GameObject lobsterPrefab;
+    [SerializeField]
+    private GameObject wormPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +51,20 @@ public class Crab : MonoBehaviour
             Destroy(collision.gameObject);
             score = score + 1;
             scoreDisplay.text = "Score: " + score;
+
+            if (score == 2 || score == 4 || score == 6)
+            {
+                float x = 5;
+                float y = 5;
+               Instantiate(lobsterPrefab, new Vector2(x, y),Quaternion.identity) ;
+            }
+
+            if (score == 2 || score == 4 || score == 6)
+            {
+                float x = Random.Range(-12, 12);
+                float y = Random.Range(-5, 5);
+                Instantiate(wormPrefab, new Vector2(x, y), Quaternion.identity);
+            }
         }
     }
 }

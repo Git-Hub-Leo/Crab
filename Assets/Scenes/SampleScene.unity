@@ -597,24 +597,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &664370695 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8216407893843428845, guid: e61b4c95953cba34bb2b97d1a4562f00, type: 3}
-  m_PrefabInstance: {fileID: 3883394609719849019}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &664370700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 664370695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7994c0934a7a44b4992d3c9bbe3cf033, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  angularSpeed: 10000
 --- !u!1 &1178846299
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,6 +886,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreDisplay: {fileID: 291055413}
+  lobsterPrefab: {fileID: 8216407893843428845, guid: e61b4c95953cba34bb2b97d1a4562f00, type: 3}
+  wormPrefab: {fileID: 4368204892465281507, guid: 7a275bde7b8f3cd4098da7946b2697d1, type: 3}
 --- !u!70 &1316881003
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1473,10 +1457,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8216407893843428845, guid: e61b4c95953cba34bb2b97d1a4562f00, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 664370700}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e61b4c95953cba34bb2b97d1a4562f00, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
