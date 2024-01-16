@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
@@ -9,6 +10,11 @@ public class Lobster : MonoBehaviour
     private float speed = 3;
     [SerializeField]
     private float angularSpeed = 1000;
+    [SerializeField]
+    private int IncreaseLobstersize = 5;
+    private int LobsterScore = 0;
+    [SerializeField]
+    private TMP_Text GameOverDisplay;
 
 
 
@@ -18,12 +24,13 @@ public class Lobster : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
         rb.gravityScale = 0;
+        GameOverDisplay.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // 1% chans för sväng
+        // 1% chance of turning 
         if (Random.Range(0, 100) < 1)
         {
             float angleRadians = rb.rotation * Mathf.PI / 180f;
@@ -35,18 +42,36 @@ public class Lobster : MonoBehaviour
        
             rb.rotation += angle;
         }
-        
-        
-        // går fram
+
     }
-    private void OnCollisionStay2D(Collision2D collision)
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         
 
         if (collision.gameObject.name.StartsWith("Crab"))
         {
             Destroy(collision.gameObject);
+            Time.timeScale = 0;
+            GameOverDisplay.enabled = true;
+            GameOverDisplay.text = "GAME OVER";
             
+        }
+
+        if (collision.gameObject.name.StartsWith("worm"))
+        {
+            Destroy(collision.gameObject);
+            LobsterScore = LobsterScore + 1;
+
+            if (IncreaseLobstersize == LobsterScore )
+            {
+                if (IncreaseLobstersize < 20 ) 
+                {
+                    IncreaseLobstersize = IncreaseLobstersize + 5;
+                    speed = speed + 1;
+                }
+            }
+
         }
 
         if (collision.gameObject.name.EndsWith("wall"))

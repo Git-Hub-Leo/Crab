@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UIElements;
 using UnityEngine.SocialPlatforms.Impl;
+using System.Runtime.InteropServices;
 
 public class Crab : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class Crab : MonoBehaviour
     private GameObject lobsterPrefab;
     [SerializeField]
     private GameObject wormPrefab;
+    private int nextLobsterScore = 10;
+    [SerializeField]
+    private int crabSpeed = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -41,10 +45,17 @@ public class Crab : MonoBehaviour
         {
             rb.rotation -= 180 * Time.deltaTime;
         }
-
         
+        //Imports new worm to random position
+        if (Random.Range(0, 100) < 0.005)
+        {
+            float x = Random.Range(-11, 11);
+            float y = Random.Range(-4, 4);
+            Instantiate(wormPrefab, new Vector2(x, y), Quaternion.identity);
+        }
+
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.name.StartsWith("worm"))
         {
@@ -52,19 +63,30 @@ public class Crab : MonoBehaviour
             score = score + 1;
             scoreDisplay.text = "Score: " + score;
 
-            if (score == 2 || score == 4 || score == 6)
-            {
-                float x = 5;
-                float y = 5;
-               Instantiate(lobsterPrefab, new Vector2(x, y),Quaternion.identity) ;
+            if (score == crabSpeed ) 
+            { 
+                if (crabSpeed < 15) 
+                {
+                    crabSpeed = crabSpeed + 5;
+                    speed = speed + 1;
+                }
             }
 
-            if (score == 2 || score == 4 || score == 6)
+            //Calls a new lobster when points increase
+            if (score == nextLobsterScore )
             {
-                float x = Random.Range(-12, 12);
-                float y = Random.Range(-5, 5);
-                Instantiate(wormPrefab, new Vector2(x, y), Quaternion.identity);
+                float x = 0;
+                float y = 0;
+                Instantiate(lobsterPrefab, new Vector2(x, y), Quaternion.identity);
+               
+                if (nextLobsterScore < 200) 
+                {
+                    nextLobsterScore = nextLobsterScore + 10;
+                }
+                
             }
+            
+           
         }
     }
 }

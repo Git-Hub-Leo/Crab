@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angularSpeed: 10000
+  IncreaseLobstersize: 5
 --- !u!114 &3931445715437908661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,3 +177,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angularSpeed: 10000
+  IncreaseLobstersize: 5
