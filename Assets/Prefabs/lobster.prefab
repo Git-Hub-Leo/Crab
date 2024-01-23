@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 49260504882587154}
   - component: {fileID: 2078069359989998994}
   - component: {fileID: 7577277715292059899}
-  - component: {fileID: 3931445715437908661}
   m_Layer: 0
   m_Name: lobster
   m_TagString: Untagged
@@ -164,17 +163,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angularSpeed: 10000
   IncreaseLobstersize: 5
---- !u!114 &3931445715437908661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8216407893843428845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7994c0934a7a44b4992d3c9bbe3cf033, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  angularSpeed: 10000
-  IncreaseLobstersize: 5
+  GameOverDisplay: {fileID: 0}

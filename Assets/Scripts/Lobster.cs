@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 
 public class Lobster : MonoBehaviour
@@ -11,7 +12,7 @@ public class Lobster : MonoBehaviour
     [SerializeField]
     private float angularSpeed = 1000;
     [SerializeField]
-    private int IncreaseLobstersize = 5;
+    private int IncreaseLobsterspeed = 5;
     private int LobsterScore = 0;
     [SerializeField]
     private TMP_Text GameOverDisplay;
@@ -37,7 +38,7 @@ public class Lobster : MonoBehaviour
             float xSpeed = Mathf.Cos(angleRadians) * speed;
             float ySpeed = Mathf.Sin(angleRadians) * speed;
             rb.velocity = new Vector2(xSpeed, ySpeed);
-            // slumpa riktningsförändring
+            // Randomize direction 
             float angle = Random.Range(-angularSpeed, angularSpeed) * Time.deltaTime;
        
             rb.rotation += angle;
@@ -55,7 +56,8 @@ public class Lobster : MonoBehaviour
             Time.timeScale = 0;
             GameOverDisplay.enabled = true;
             GameOverDisplay.text = "GAME OVER";
-            
+            SceneManager.LoadScene("StartScene");
+
         }
 
         if (collision.gameObject.name.StartsWith("worm"))
@@ -63,11 +65,11 @@ public class Lobster : MonoBehaviour
             Destroy(collision.gameObject);
             LobsterScore = LobsterScore + 1;
 
-            if (IncreaseLobstersize == LobsterScore )
+            if (IncreaseLobsterspeed == LobsterScore )
             {
-                if (IncreaseLobstersize < 20 ) 
+                if (IncreaseLobsterspeed < 20 ) 
                 {
-                    IncreaseLobstersize = IncreaseLobstersize + 5;
+                    IncreaseLobsterspeed = IncreaseLobsterspeed + 5;
                     speed = speed + 1;
                 }
             }
